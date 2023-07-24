@@ -1,0 +1,790 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc6164a --dep-file=TLE9012DQU.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc27xd -D__CPU_TC27XD__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc27xd -ID:\\\\Project\\\\BMS -ID:\\\\Project\\\\BMS\\\\Configurations -ID:\\\\Project\\\\BMS\\\\Libraries -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Infra -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Infra\\\\Platform -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Infra\\\\Sfr -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Infra\\\\Sfr\\\\TC27D\\\\_Reg -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Service -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Service\\\\CpuGeneric -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Service\\\\CpuGeneric\\\\StdIf -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -ID:\\\\Project\\\\BMS\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Asclin -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Asclin\\\\Asc -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Asclin\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\CStart -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Irq -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Cpu\\\\Trap -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Gtm\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Mtu\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Port\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Scu\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Src\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\Stm\\\\Std -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_Impl -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_Lib -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_Lib\\\\DataHandling -ID:\\\\Project\\\\BMS\\\\Libraries\\\\iLLD\\\\TC27D\\\\Tricore\\\\_PinMap -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o TLE9012DQU.src ../TLE9012DQU.c"
+	.compiler_name		"ctc"
+	;source	'../TLE9012DQU.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.TLE9012DQU.CalcCRC',code,cluster('CalcCRC')
+	.sect	'.text.TLE9012DQU.CalcCRC'
+	.align	2
+	
+	.global	CalcCRC
+; Function CalcCRC
+.L12:
+CalcCRC:	.type	func
+	mov	d15,#255
+.L72:
+	j	.L2
+.L3:
+	add	d4,#-1
+.L99:
+	ld.bu	d0,[a4]
+.L100:
+	xor	d15,d0
+.L73:
+	movh.a	a15,#@his(crcTable)
+	lea	a15,[a15]@los(crcTable)
+.L101:
+	addsc.a	a15,a15,d15,#0
+	ld.bu	d15,[a15]
+.L74:
+	add.a	a4,#1
+.L2:
+	jne	d4,#0,.L3
+.L102:
+	mov	d0,#-1
+	xor	d15,d0
+.L75:
+	extr.u	d2,d15,#0,#8
+.L103:
+	j	.L4
+.L4:
+	ret
+.L45:
+	
+__CalcCRC_function_end:
+	.size	CalcCRC,__CalcCRC_function_end-CalcCRC
+.L25:
+	; End of function
+	
+	.sdecl	'.text.TLE9012DQU.CRCInit',code,cluster('CRCInit')
+	.sect	'.text.TLE9012DQU.CRCInit'
+	.align	2
+	
+	.global	CRCInit
+; Function CRCInit
+.L14:
+CRCInit:	.type	func
+	mov	d0,#0
+.L76:
+	j	.L5
+.L6:
+	extr.u	d15,d0,#0,#8
+.L57:
+	mov	d1,#0
+.L78:
+	j	.L7
+.L8:
+	jz.t	d15:7,.L9
+.L108:
+	sha	d15,#1
+.L77:
+	xor	d15,d15,#29
+.L109:
+	j	.L10
+.L9:
+	sha	d15,#1
+.L10:
+	extr.u	d15,d15,#0,#8
+.L79:
+	add	d1,#1
+.L7:
+	jlt.u	d1,#8,.L8
+.L58:
+	movh.a	a15,#@his(crcTable)
+	lea	a15,[a15]@los(crcTable)
+.L110:
+	addsc.a	a15,a15,d0,#0
+.L111:
+	st.b	[a15],d15
+.L112:
+	add	d0,#1
+.L5:
+	mov	d15,#256
+.L113:
+	jlt	d0,d15,.L6
+.L54:
+	ret
+.L52:
+	
+__CRCInit_function_end:
+	.size	CRCInit,__CRCInit_function_end-CRCInit
+.L30:
+	; End of function
+	
+	.sdecl	'.text.TLE9012DQU.Assign_PARAMETERS_To_TLE9012',code,cluster('Assign_PARAMETERS_To_TLE9012')
+	.sect	'.text.TLE9012DQU.Assign_PARAMETERS_To_TLE9012'
+	.align	2
+	
+	.global	Assign_PARAMETERS_To_TLE9012
+; Function Assign_PARAMETERS_To_TLE9012
+.L16:
+Assign_PARAMETERS_To_TLE9012:	.type	func
+	and	d15,d6,#255
+.L81:
+	insert	d0,d0,d15,#0,#8
+.L118:
+	sha	d15,d6,#-8
+.L119:
+	and	d15,#255
+.L120:
+	insert	d0,d0,d15,#8,#8
+.L121:
+	mov.aa	a15,a4
+.L82:
+	add.a	a15,#0
+.L80:
+	mov	d15,#30
+.L122:
+	st.b	[a15],d15
+.L84:
+	mov.aa	a15,a4
+.L85:
+	add.a	a15,#1
+.L123:
+	st.b	[a15],d4
+.L86:
+	mov.aa	a15,a4
+.L87:
+	add.a	a15,#2
+.L124:
+	st.b	[a15],d5
+.L88:
+	mov.aa	a15,a4
+.L89:
+	add.a	a15,#3
+.L125:
+	extr.u	d15,d0,#8,#8
+.L126:
+	st.b	[a15],d15
+.L90:
+	add.a	a4,#4
+.L83:
+	and	d15,d6,#255
+.L127:
+	st.b	[a4],d15
+.L128:
+	ret
+.L60:
+	
+__Assign_PARAMETERS_To_TLE9012_function_end:
+	.size	Assign_PARAMETERS_To_TLE9012,__Assign_PARAMETERS_To_TLE9012_function_end-Assign_PARAMETERS_To_TLE9012
+.L35:
+	; End of function
+	
+	.sdecl	'.bss.TLE9012DQU.Send_TLE9012_Frame',data,cluster('Send_TLE9012_Frame')
+	.sect	'.bss.TLE9012DQU.Send_TLE9012_Frame'
+	.global	Send_TLE9012_Frame
+Send_TLE9012_Frame:	.type	object
+	.size	Send_TLE9012_Frame,6
+	.space	6
+	.sdecl	'.data.TLE9012DQU.Read_Back_First_IC',data,cluster('Read_Back_First_IC')
+	.sect	'.data.TLE9012DQU.Read_Back_First_IC'
+	.global	Read_Back_First_IC
+Read_Back_First_IC:	.type	object
+	.size	Read_Back_First_IC,4
+	.byte	30,1,54,168
+	.sdecl	'.bss.TLE9012DQU.CRC',data,cluster('CRC')
+	.sect	'.bss.TLE9012DQU.CRC'
+	.global	CRC
+CRC:	.type	object
+	.size	CRC,1
+	.space	1
+	.sdecl	'.bss.TLE9012DQU.crcTable',data,cluster('crcTable')
+	.sect	'.bss.TLE9012DQU.crcTable'
+	.global	crcTable
+crcTable:	.type	object
+	.size	crcTable,256
+	.space	256
+	.calls	'CalcCRC','',0
+	.calls	'CRCInit','',0
+	.calls	'Assign_PARAMETERS_To_TLE9012','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L18:
+	.word	430
+	.half	3
+	.word	.L19
+	.byte	4
+.L17:
+	.byte	1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1
+	.word	.L20
+.L44:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L46:
+	.byte	3
+	.word	151
+	.byte	4
+	.word	151
+.L49:
+	.byte	3
+	.word	173
+.L55:
+	.byte	2
+	.byte	'int',0,4,5
+.L63:
+	.byte	2
+	.byte	'unsigned short int',0,2,7
+.L67:
+	.byte	5,2
+	.word	151
+	.byte	6,1,0,2
+	.byte	'short int',0,2,5,7
+	.byte	'__wchar_t',0,1,1,1
+	.word	221
+	.byte	2
+	.byte	'unsigned int',0,4,7,7
+	.byte	'__size_t',0,1,1,1
+	.word	252
+	.byte	8,1,3
+	.word	285
+	.byte	7
+	.byte	'__codeptr',0,1,1,1
+	.word	287
+	.byte	7
+	.byte	'__intptr_t',0,1,1,1
+	.word	183
+	.byte	7
+	.byte	'__uintptr_t',0,1,1,1
+	.word	252
+	.byte	7
+	.byte	'_iob_flag_t',0,2,82,25
+	.word	190
+	.byte	2
+	.byte	'long long int',0,8,5,7
+	.byte	'intmax_t',0,3,198,2,41
+	.word	369
+.L69:
+	.byte	5,6
+	.word	151
+	.byte	6,5,0
+.L70:
+	.byte	5,4
+	.word	151
+	.byte	6,3,0
+.L71:
+	.byte	5,128,2
+	.word	151
+	.byte	6,255,1,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L19:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,38,0,73,19
+	.byte	0,0,5,1,1,11,15,73,19,0,0,6,33,0,47,15,0,0,7,22,0,3,8,58,15,59,15,57,15,73,19,0,0,8,21,0,54,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L20:
+	.word	.L92-.L91
+.L91:
+	.half	3
+	.word	.L94-.L93
+.L93:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'C:\\Infineon\\AURIX-Studio-1.9.4\\plugins\\com.infineon.aurix.tools_1.9.4\\build_system\\tools\\Compilers\\Tasking_1.1r8\\ctc\\include\\',0
+	.byte	0
+	.byte	'../TLE9012DQU.c',0,0,0,0
+	.byte	'stdio.h',0,1,0,0
+	.byte	'stdint.h',0,1,0,0,0
+.L94:
+.L92:
+	.sdecl	'.debug_info',debug,cluster('CalcCRC')
+	.sect	'.debug_info'
+.L21:
+	.word	264
+	.half	3
+	.word	.L22
+	.byte	4,1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1
+	.word	.L24,.L23
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'CalcCRC',0,1,19,15
+	.word	.L44
+	.byte	1,1,1
+	.word	.L12,.L45,.L11
+	.byte	4
+	.byte	'buf',0,1,19,39
+	.word	.L46,.L47
+	.byte	4
+	.byte	'len',0,1,19,58
+	.word	.L44,.L48
+	.byte	5
+	.word	.L12,.L45
+	.byte	6
+	.byte	'ptr',0,1,20,31
+	.word	.L49,.L50
+	.byte	6
+	.byte	'_crc',0,1,21,23
+	.word	.L44,.L51
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('CalcCRC')
+	.sect	'.debug_abbrev'
+.L22:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('CalcCRC')
+	.sect	'.debug_line'
+.L23:
+	.word	.L96-.L95
+.L95:
+	.half	3
+	.word	.L98-.L97
+.L97:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../TLE9012DQU.c',0,0,0,0,0
+.L98:
+	.byte	5,28,7,0,5,2
+	.word	.L12
+	.byte	3,20,1,5,20,9
+	.half	.L72-.L12
+	.byte	3,2,1,5,18,9
+	.half	.L3-.L72
+	.byte	1,5,45,9
+	.half	.L99-.L3
+	.byte	1,5,43,9
+	.half	.L100-.L99
+	.byte	1,5,29,9
+	.half	.L73-.L100
+	.byte	1,5,37,9
+	.half	.L101-.L73
+	.byte	1,5,49,9
+	.half	.L74-.L101
+	.byte	1,5,20,9
+	.half	.L2-.L74
+	.byte	1,5,16,7,9
+	.half	.L102-.L2
+	.byte	3,2,1,5,9,9
+	.half	.L103-.L102
+	.byte	1,5,1,9
+	.half	.L4-.L103
+	.byte	3,1,1,7,9
+	.half	.L25-.L4
+	.byte	0,1,1
+.L96:
+	.sdecl	'.debug_ranges',debug,cluster('CalcCRC')
+	.sect	'.debug_ranges'
+.L24:
+	.word	-1,.L12,0,.L25-.L12,0,0
+	.sdecl	'.debug_info',debug,cluster('CRCInit')
+	.sect	'.debug_info'
+.L26:
+	.word	262
+	.half	3
+	.word	.L27
+	.byte	4,1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1
+	.word	.L29,.L28
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'CRCInit',0,1,28,6,1,1,1
+	.word	.L14,.L52,.L13
+	.byte	4
+	.word	.L14,.L52
+	.byte	5
+	.byte	'_crc',0,1,29,19
+	.word	.L44,.L53
+	.byte	4
+	.word	.L14,.L54
+	.byte	5
+	.byte	'i',0,1,30,18
+	.word	.L55,.L56
+	.byte	4
+	.word	.L57,.L58
+	.byte	5
+	.byte	'bit',0,1,33,36
+	.word	.L44,.L59
+	.byte	0,0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('CRCInit')
+	.sect	'.debug_abbrev'
+.L27:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('CRCInit')
+	.sect	'.debug_line'
+.L28:
+	.word	.L105-.L104
+.L104:
+	.half	3
+	.word	.L107-.L106
+.L106:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../TLE9012DQU.c',0,0,0,0,0
+.L107:
+	.byte	5,20,7,0,5,2
+	.word	.L14
+	.byte	3,29,1,5,34,9
+	.half	.L76-.L14
+	.byte	1,5,24,9
+	.half	.L6-.L76
+	.byte	3,1,1,5,40,9
+	.half	.L57-.L6
+	.byte	3,2,1,5,52,9
+	.half	.L78-.L57
+	.byte	1,5,68,9
+	.half	.L8-.L78
+	.byte	1,5,91,7,9
+	.half	.L108-.L8
+	.byte	1,5,97,9
+	.half	.L77-.L108
+	.byte	1,5,105,9
+	.half	.L109-.L77
+	.byte	1,5,113,9
+	.half	.L9-.L109
+	.byte	1,5,82,9
+	.half	.L10-.L9
+	.byte	1,5,57,9
+	.half	.L79-.L10
+	.byte	1,5,52,9
+	.half	.L7-.L79
+	.byte	1,5,17,7,9
+	.half	.L58-.L7
+	.byte	3,2,1,5,25,9
+	.half	.L110-.L58
+	.byte	1,5,29,9
+	.half	.L111-.L110
+	.byte	1,5,37,9
+	.half	.L112-.L111
+	.byte	3,123,1,5,29,9
+	.half	.L5-.L112
+	.byte	1,5,34,9
+	.half	.L113-.L5
+	.byte	1,5,1,7,9
+	.half	.L54-.L113
+	.byte	3,7,1,7,9
+	.half	.L30-.L54
+	.byte	0,1,1
+.L105:
+	.sdecl	'.debug_ranges',debug,cluster('CRCInit')
+	.sect	'.debug_ranges'
+.L29:
+	.word	-1,.L14,0,.L30-.L14,0,0
+	.sdecl	'.debug_info',debug,cluster('Assign_PARAMETERS_To_TLE9012')
+	.sect	'.debug_info'
+.L31:
+	.word	327
+	.half	3
+	.word	.L32
+	.byte	4,1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1
+	.word	.L34,.L33
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'Assign_PARAMETERS_To_TLE9012',0,1,39,6,1,1,1
+	.word	.L16,.L60,.L15
+	.byte	4
+	.byte	'ID',0,1,39,49
+	.word	.L44,.L61
+	.byte	4
+	.byte	'Address',0,1,39,66
+	.word	.L44,.L62
+	.byte	4
+	.byte	'Data',0,1,39,89
+	.word	.L63,.L64
+	.byte	4
+	.byte	'array',0,1,39,108
+	.word	.L46,.L65
+	.byte	5
+	.word	.L16,.L60
+	.byte	6
+	.byte	'index',0,1,41,19
+	.word	.L44,.L66
+	.byte	6
+	.byte	'Data_bytes',0,1,42,19
+	.word	.L67,.L68
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Assign_PARAMETERS_To_TLE9012')
+	.sect	'.debug_abbrev'
+.L32:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Assign_PARAMETERS_To_TLE9012')
+	.sect	'.debug_line'
+.L33:
+	.word	.L115-.L114
+.L114:
+	.half	3
+	.word	.L117-.L116
+.L116:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../TLE9012DQU.c',0,0,0,0,0
+.L117:
+	.byte	5,26,7,0,5,2
+	.word	.L16
+	.byte	3,42,1,5,19,9
+	.half	.L81-.L16
+	.byte	1,5,26,9
+	.half	.L118-.L81
+	.byte	3,1,1,5,31,9
+	.half	.L119-.L118
+	.byte	1,5,19,9
+	.half	.L120-.L119
+	.byte	1,5,11,9
+	.half	.L121-.L120
+	.byte	3,2,1,5,10,9
+	.half	.L82-.L121
+	.byte	1,5,20,9
+	.half	.L80-.L82
+	.byte	1,5,18,9
+	.half	.L122-.L80
+	.byte	1,5,11,9
+	.half	.L84-.L122
+	.byte	3,2,1,5,10,9
+	.half	.L85-.L84
+	.byte	1,5,18,9
+	.half	.L123-.L85
+	.byte	1,5,11,9
+	.half	.L86-.L123
+	.byte	3,2,1,5,10,9
+	.half	.L87-.L86
+	.byte	1,5,18,9
+	.half	.L124-.L87
+	.byte	1,5,11,9
+	.half	.L88-.L124
+	.byte	3,2,1,5,10,9
+	.half	.L89-.L88
+	.byte	1,5,30,9
+	.half	.L125-.L89
+	.byte	1,5,18,9
+	.half	.L126-.L125
+	.byte	1,5,10,9
+	.half	.L90-.L126
+	.byte	3,2,1,5,30,9
+	.half	.L83-.L90
+	.byte	1,5,18,9
+	.half	.L127-.L83
+	.byte	1,5,1,9
+	.half	.L128-.L127
+	.byte	3,1,1,7,9
+	.half	.L35-.L128
+	.byte	0,1,1
+.L115:
+	.sdecl	'.debug_ranges',debug,cluster('Assign_PARAMETERS_To_TLE9012')
+	.sect	'.debug_ranges'
+.L34:
+	.word	-1,.L16,0,.L35-.L16,0,0
+	.sdecl	'.debug_info',debug,cluster('Send_TLE9012_Frame')
+	.sect	'.debug_info'
+.L36:
+	.word	183
+	.half	3
+	.word	.L37
+	.byte	4,1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'Send_TLE9012_Frame',0,1,13,15
+	.word	.L69
+	.byte	1,5,3
+	.word	Send_TLE9012_Frame
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Send_TLE9012_Frame')
+	.sect	'.debug_abbrev'
+.L37:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('CRC')
+	.sect	'.debug_info'
+.L38:
+	.word	168
+	.half	3
+	.word	.L39
+	.byte	4,1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'CRC',0,1,16,15
+	.word	.L44
+	.byte	1,5,3
+	.word	CRC
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('CRC')
+	.sect	'.debug_abbrev'
+.L39:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Read_Back_First_IC')
+	.sect	'.debug_info'
+.L40:
+	.word	183
+	.half	3
+	.word	.L41
+	.byte	4,1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'Read_Back_First_IC',0,1,14,15
+	.word	.L70
+	.byte	1,5,3
+	.word	Read_Back_First_IC
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Read_Back_First_IC')
+	.sect	'.debug_abbrev'
+.L41:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('crcTable')
+	.sect	'.debug_info'
+.L42:
+	.word	173
+	.half	3
+	.word	.L43
+	.byte	4,1
+	.byte	'../TLE9012DQU.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'D:\\Project\\BMS\\TriCore Debug (TASKING)\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'crcTable',0,1,17,15
+	.word	.L71
+	.byte	1,5,3
+	.word	crcTable
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('crcTable')
+	.sect	'.debug_abbrev'
+.L43:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Assign_PARAMETERS_To_TLE9012')
+	.sect	'.debug_loc'
+.L62:
+	.word	-1,.L16,0,.L60-.L16
+	.half	1
+	.byte	85
+	.word	0,0
+.L15:
+	.word	-1,.L16,0,.L60-.L16
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L64:
+	.word	-1,.L16,0,.L60-.L16
+	.half	1
+	.byte	86
+	.word	0,0
+.L68:
+	.word	-1,.L16,.L81-.L16,.L60-.L16
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L61:
+	.word	-1,.L16,0,.L60-.L16
+	.half	1
+	.byte	84
+	.word	0,0
+.L65:
+	.word	-1,.L16,0,.L80-.L16
+	.half	1
+	.byte	100
+	.word	.L82-.L16,.L83-.L16
+	.half	1
+	.byte	111
+	.word	.L84-.L16,.L85-.L16
+	.half	1
+	.byte	100
+	.word	.L86-.L16,.L87-.L16
+	.half	1
+	.byte	100
+	.word	.L88-.L16,.L89-.L16
+	.half	1
+	.byte	100
+	.word	.L90-.L16,.L60-.L16
+	.half	1
+	.byte	100
+	.word	0,0
+.L66:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('CRCInit')
+	.sect	'.debug_loc'
+.L13:
+	.word	-1,.L14,0,.L52-.L14
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L53:
+	.word	-1,.L14,.L57-.L14,.L77-.L14
+	.half	1
+	.byte	95
+	.word	.L9-.L14,.L10-.L14
+	.half	1
+	.byte	95
+	.word	.L79-.L14,.L5-.L14
+	.half	1
+	.byte	95
+	.word	0,0
+.L59:
+	.word	-1,.L14,.L78-.L14,.L5-.L14
+	.half	1
+	.byte	81
+	.word	0,0
+.L56:
+	.word	-1,.L14,.L76-.L14,.L52-.L14
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('CalcCRC')
+	.sect	'.debug_loc'
+.L11:
+	.word	-1,.L12,0,.L45-.L12
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L51:
+	.word	-1,.L12,.L72-.L12,.L73-.L12
+	.half	1
+	.byte	95
+	.word	.L74-.L12,.L75-.L12
+	.half	1
+	.byte	95
+	.word	0,0
+.L47:
+	.word	-1,.L12,0,.L45-.L12
+	.half	1
+	.byte	100
+	.word	0,0
+.L48:
+	.word	-1,.L12,0,.L45-.L12
+	.half	1
+	.byte	84
+	.word	0,0
+.L50:
+	.word	-1,.L12,0,.L45-.L12
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L129:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('CalcCRC')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L129,.L12,.L45-.L12
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('CRCInit')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L129,.L14,.L52-.L14
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Assign_PARAMETERS_To_TLE9012')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L129,.L16,.L60-.L16
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+	; Module end
